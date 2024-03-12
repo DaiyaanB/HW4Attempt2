@@ -1,5 +1,3 @@
-<!--GPT helped with BS grid here-->
-
 <h1><%= @place["name"] %></h1>
 
 <h2>My Entries</h2>
@@ -8,12 +6,16 @@
     <% @entries.each_with_index do |entry, index| %>
       <div class="col-md-4 mb-4">
         <div class="card">
+          <!-- Title and Date now above the image Thanks to GPT -->
+          <div class="card-header"> <!-- Use card-header for a more distinct separation, if desired -->
+            <h5 class="card-title"><%= entry["title"] %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= entry["occurred_on"] %></h6>
+          </div>
           <% if entry.uploaded_image.attached? %>
             <img src="<%= url_for(entry.uploaded_image) %>" class="card-img-top" alt="<%= entry.title %>">
           <% end %>
           <div class="card-body">
-            <h5 class="card-title"><%= entry["title"] %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= entry["occurred_on"] %></h6>
+            <!-- Description remains in card-body -->
             <p class="card-text"><%= entry["description"] %></p>
           </div>
         </div>

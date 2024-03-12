@@ -22,6 +22,7 @@ class EntriesController < ApplicationController
       @entry.occurred_on = params["occurred_on"]
       @entry.place_id = params["place_id"]
       @entry.user_id = params["author_id"] # This is indirectly session["user_id"] to match the logged-in user
+      @entry.uploaded_image.attach(params["uploaded_image"])
   
       if @entry.save
         @entry.uploaded_image.attach(params[:entry][:uploaded_image]) if params[:entry] && params[:entry][:uploaded_image].present?
