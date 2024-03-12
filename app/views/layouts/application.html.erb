@@ -5,11 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <title>Tacogram</title>
+  <title>DBGram</title>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <!-- Bootstrap CSS already included, so removing duplicate -->
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
@@ -39,7 +37,7 @@
             <li class="nav-item"><a href="/users/new" class="nav-link">Sign Up</a></li>
             <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
           <% else %>
-            <li class="nav-text">Logged in as: <%= @user["username"] %></li>
+            <li class="nav-text mx-2">Logged in as: <%= @user["username"] %></li> <!-- Added mx-2 for spacing -->
             <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
           <% end %>
         </ul>
@@ -47,9 +45,9 @@
     </div>
   </nav>
 
-  <div class="container mt-3">
+  <div class="container my-4"> <!-- Increased top and bottom margin -->
     <% if flash["notice"] != nil %>
-      <div class="alert alert-primary">
+      <div class="alert alert-primary mb-3"> <!-- Added bottom margin -->
         <%= flash["notice"] %>
       </div>
     <% end %>
@@ -57,6 +55,11 @@
     <%= yield %>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <footer class="text-center mt-4 py-4"> <!-- Added a basic footer for visual and structure enhancement -->
+    <div class="container">
+      © 2024 DBGram. All rights reserved.
+    </div>
+  </footer>
+
 </body>
 </html>
