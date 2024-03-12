@@ -1,11 +1,12 @@
 <h1>Places</h1>
 
+<p>
+  <a href="/places/new" class="btn btn-secondary mt-3">New place</a>
+</p>
+
 <ul>
   <% for place in @places %>
     <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
   <% end %>
 </ul>
 
-<p>
-  <a href="/places/new">New place</a>
-</p>

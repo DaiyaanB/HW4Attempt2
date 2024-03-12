@@ -1,16 +1,35 @@
+<!--GPT helped with BS grid here-->
+
 <h1><%= @place["name"] %></h1>
 
 <h2>My Entries</h2>
-<% for entry in @entries %>
-  <h3><%= entry["title"] %></h3>
-  <h4><%= entry["occurred_on"] %></h4>
-  <p><%= entry["description"] %></p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <% @entries.each_with_index do |entry, index| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <% if entry.uploaded_image.attached? %>
+            <img src="<%= url_for(entry.uploaded_image) %>" class="card-img-top" alt="<%= entry.title %>">
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= entry["title"] %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= entry["occurred_on"] %></h6>
+            <p class="card-text"><%= entry["description"] %></p>
+          </div>
+        </div>
+      </div>
+      <%# Ensure we start a new row after every 3rd entry %>
+      <% if (index + 1) % 3 == 0 && index + 1 != @entries.size %>
+        </div><div class="row">
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
 <p>
-  <a href="/entries/new?place_id=<%= @place["id"] %>">New Entry</a>
+  <a href="/entries/new?place_id=<%= @place["id"] %>" class="btn btn-primary mt-3">New Entry</a>
 </p>
 
 <p>
-  <a href="/places">Back to All Places</a>
+  <a href="/places" class="btn btn-secondary mt-3">Back to All Places</a>
 </p>
