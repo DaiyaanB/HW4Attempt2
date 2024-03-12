@@ -22,4 +22,6 @@ end
 
 group :production do
   gem "pg"
+  gem "tabulo"
+  gem "web-console"
 end
